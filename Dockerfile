@@ -6,14 +6,16 @@ LABEL maintainer="Pierre-Yves Jezegou <jezegoup@gmail.com>"
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     #echo "update" && \
-    echo "8">&1 && apt-get -qy full-upgrade && \
+    apt-get -qy full-upgrade && \
     #echo "upgrade" && \
     apt-get install -qy git && \
 # Install a basic SSH server
     apt-get install -qy openssh-server && \
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd && \
     mkdir -p /var/run/sshd && \
-# Install Essatials Build tools
+# Install Java for jenkins integration
+    apt-get install -qy openjdk-8-jdk && \
+# Install Essentials Build tools
     apt-get install -qy build-essential && \
 # Install gcc
     apt-get install -qy gcc && \
