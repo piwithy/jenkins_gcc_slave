@@ -21,6 +21,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -qy gcc && \
 # Install make
     apt-get install -qy make && \
+# Install cmake
+    apt-get install -qy cmake && \
 # Cleanup old packages
     apt-get -qy autoremove && \
 # Add user jenkins to the image
